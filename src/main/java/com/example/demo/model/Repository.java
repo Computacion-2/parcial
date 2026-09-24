@@ -30,9 +30,13 @@ public class Repository {
     @JsonIgnore
     private List<Commit> commitRepositoryId;
 
-    @OneToMany
-    @JoinColumn(name = "repository_id")
+    @OneToMany(mappedBy = "repositoryId")
     @JsonIgnore
     private List<PullRequest> PullRepositoryId;
+
+    @ManyToOne
+    @JoinColumn(name = "owner_id")
+    @JsonIgnore
+    private User ownerId;
 
 }

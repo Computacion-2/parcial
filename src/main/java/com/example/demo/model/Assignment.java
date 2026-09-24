@@ -3,8 +3,11 @@ package com.example.demo.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.internal.util.StringHelper;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,21 +20,21 @@ public class Assignment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long deadline;
+    private Integer id;
 
-    @Column(nullable = false)
+    @Column(name = "title", nullable = false)
     private String title;
 
-    @Column(columnDefinition = "TEXT")
-    private String id2;
+    @Column(name = "description")
+    private String description;
 
-    @Column(nullable = false, unique = true)
-    private Timestamp id;
+    @Column(name = "deadline")
+    private Timestamp deadline;
 
     @Column(name = "max_score", nullable = false)
     private Integer maxScore;
 
-    @ManyToOne(,fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "Classroom_id")
     @JsonIgnore
     private Classroom classroomId;
@@ -39,6 +42,6 @@ public class Assignment {
     @JsonIgnore
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "assignment_id", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "assignmentId", cascade = CascadeType.ALL)
     private List<Repository> repositories;
 }

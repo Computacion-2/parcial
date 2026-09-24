@@ -28,7 +28,7 @@ public class Classroom {
 
     @OneToMany(mappedBy = "classroomId")
     @JsonIgnore
-    List<Classroom> classrooms;
+    List<Assignment> assignments;
 
     @ManyToOne
     @JoinColumn(name = "teacher_id")

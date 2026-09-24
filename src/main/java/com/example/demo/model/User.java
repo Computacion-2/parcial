@@ -19,27 +19,27 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false, unique = true)
+    @Column(name = "username", nullable = false, unique = true)
     private String username;
 
-    @Column(nullable = false)
+    @Column(name = "email", nullable = false)
     private String email;
 
     @Column(name = "full_name", nullable = false)
-    private String role;
-
-    @Column(nullable = false)
     private String fullName;
+
+    @Column(name = "role", nullable = false)
+    private String role;
 
     @OneToMany(mappedBy = "teacherId", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Classroom> ownedRepositories;
 
-    @OneToMany(mappedBy = "owner_id", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "ownerId", cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<PullRequest> taughtRepositories;
+    private List<Repository> taughtRepositories;
 
-    @OneToMany(mappedBy = "author_id", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "authorId", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<PullRequest> authoredPullRequests;
 
@@ -50,8 +50,4 @@ public class User {
     @OneToMany(mappedBy = "authorId", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Commit> author_id;
-
-    @OneToMany(mappedBy = "owner_id", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private List<Repository> owner_id;
 }

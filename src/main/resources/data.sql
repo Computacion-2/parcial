@@ -21,7 +21,7 @@ INSERT INTO assignments (id, title, description, deadline, max_score, classroom_
 (4, 'Proyecto Final: Microservicios', 'Arquitectura modular orientada a eventos', '2026-05-30 23:59:59', 100, 3),
 (5, 'Laboratorio RPC Antiguo', 'Practicas de gRPC del semestre anterior', '2025-03-10 23:59:59', 100, 4);
 
-INSERT INTO classrooms (id, name, course_code, semester) VALUES
+INSERT INTO classrooms (id, name, course_code, semester, teacher_id) VALUES
 (1, 'Computacion en Internet II - Grupo 1', 'CI-2026-G1', '2026-02', 1),
 (2, 'Computacion en Internet II - Grupo 2', 'CI-2026-G2', '2026-02', 2),
 (3, 'Arquitectura de Software - Grupo 1', 'AS-2026-G1', '2026-02', 1),
