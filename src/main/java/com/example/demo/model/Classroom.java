@@ -14,4 +14,25 @@ import java.util.List;
 @Table(name = "classrooms")
 public class Classroom {
 
+    @Id
+    private Integer id;
+
+    @Column(name = "name", nullable = false)
+    private String name;
+
+    @Column(name = "course_code")
+    private String courseCode;
+
+    @Column(name = "semester")
+    private String semester;
+
+    @OneToMany(mappedBy = "classroomId")
+    @JsonIgnore
+    List<Classroom> classrooms;
+
+    @ManyToOne
+    @JoinColumn(name = "teacher_id")
+    @JsonIgnore
+    private User teacherId;
+
 }

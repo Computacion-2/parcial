@@ -32,11 +32,15 @@ public class PullRequest {
     private Timestamp createdAt;
 
     @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "repository_id", nullable = false)
-    private List<Repository> repository;
+    private Repository repository_id;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "reviewer_id")
-    private User teacher;
+    private User reviewerId;
+
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private User authorId;
 }

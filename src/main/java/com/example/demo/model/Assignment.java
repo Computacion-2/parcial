@@ -31,12 +31,14 @@ public class Assignment {
     @Column(name = "max_score", nullable = false)
     private Integer maxScore;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    private Classroom classroom;
+    @ManyToOne(,fetch = FetchType.LAZY)
+    @JoinColumn(name = "Classroom_id")
+    @JsonIgnore
+    private Classroom classroomId;
 
     @JsonIgnore
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @ManyToMany(mappedBy = "assignment", cascade = CascadeType.ALL)
-    private Repository repositories;
+    @OneToMany(mappedBy = "assignment_id", cascade = CascadeType.ALL)
+    private List<Repository> repositories;
 }
